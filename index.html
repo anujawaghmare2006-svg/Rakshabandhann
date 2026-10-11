@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rakshabandhan wishes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --maroon:#91c260;
+    --maroon-dark:#ef24a88a;
+    --marigold:#4d30ad;
+    --gold-light:#c1e2b0;
+    --ivory:#8cd8e7;
+    --red:#cf5da7;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{
+    min-height:100vh;
+    background:
+      radial-gradient(ellipse at top left, #a94162 0%, transparent 55%),
+      radial-gradient(ellipse at bottom right, #84147c 0%, transparent 60%),
+      linear-gradient(180deg, var(--maroon-dark) 0%, #2a0f1c 100%);
+    font-family:'Mukta', sans-serif;
+    color:var(--ivory);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    overflow-x:hidden;
+  }
+
+  .card{
+    width:100%;
+    max-width:640px;
+    background:rgba(85, 5, 5, 0.06);
+    border:1px solid rgba(232,163,61,0.4);
+    border-radius:22px;
+    padding:38px 30px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.4);
+    position:relative;
+    min-height:420px;
+    display:flex;
+    flex-direction:column;
+  }
+
+  .eyebrow{
+    font-size:0.8rem;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    color:var(--gold-light);
+    font-weight:600;
+    text-align:center;
+  }
+  h1{
+    font-family:'Yatra One', cursive;
+    font-size:clamp(1.8rem, 5vw, 2.6rem);
+    color:var(--gold-light);
+    margin:10px 0 6px;
+    text-align:center;
+    text-shadow:0 2px 18px rgba(232,163,61,0.35);
+  }
+  .subtitle{
+    font-size:1.05rem;
+    color:#f2dcc7;
+    text-align:center;
+    margin-bottom:10px;
+  }
+
+  .step{
+    display:none;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    flex:1;
+    text-align:center;
+    animation:fadeIn 0.45s ease;
+  }
+  .step.active{ display:flex; }
+
+  @keyframes fadeIn{
+    from{ opacity:0; transform:translateY(10px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+
+  .name-row{
+    margin-top:20px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .name-row label{ font-size:0.92rem; color:#e7c9a8;}
+  .name-row input{
+    background:rgba(255,255,255,0.08);
+    border:1px solid var(--marigold);
+    color:var(--ivory);
+    padding:8px 14px;
+    border-radius:999px;
+    font-family:'Mukta', sans-serif;
+    font-size:1rem;
+    outline:none;
+    min-width:160px;
+    text-align:center;
+  }
+  .name-row input:focus{ box-shadow:0 0 0 3px rgba(232,163,61,0.3); }
+
+  
+  .photo-frame{
+    width:100%;
+    max-width:400px;
+    border-radius:16px;
+    overflow:hidden;
+    border:4px solid var(--marigold);
+    box-shadow:0 12px 30px rgba(0,0,0,0.4);
+    margin:14px auto 4px;
+  }
+  .photo-frame img{
+    display:block;
+    width:100%;
+    height:auto;
+    aspect-ratio:4/3;
+    object-fit:cover;
+  }
+  .caption{
+    margin-top:14px;
+    font-size:1.05rem;
+    color:var(--gold-light);
+    font-family:'Yatra One', cursive;
+  }
+
+  .gallery{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    width:100%;
+    max-width:420px;
+    margin:10px auto 4px;
+  }
+  .gallery .photo-frame{ margin:0; border-width:3px; }
+  .gallery img{ aspect-ratio:1/1; }
+
+  
+  .wish-list{
+    text-align:right;
+    max-width:480px;
+    margin:10px auto 0;
+  }
+  .wish-list p{
+    font-size:1.1rem;
+    line-height:1.9;
+    margin-bottom:10px;
+  }
+
+  
+  .controls{
+    margin-top:26px;
+    display:flex;
+    gap:14px;
+    justify-content:center;
+  }
+  button{
+    font-family:'Yatra One', cursive;
+    font-size:1.05rem;
+    padding:12px 30px;
+    border-radius:999px;
+    border:none;
+    cursor:pointer;
+    transition:transform 0.15s ease;
+  }
+  button:hover{ transform:translateY(-2px) scale(1.02); }
+  button:active{ transform:translateY(0) scale(0.98); }
+  .btn-primary{
+    background:linear-gradient(135deg, var(--marigold), var(--red));
+    color:#fff;
+    box-shadow:0 8px 22px rgba(193,39,45,0.35);
+  }
+  .btn-secondary{
+    background:transparent;
+    color:var(--gold-light);
+    border:1px solid var(--marigold);
+  }
+
+  .dots{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    margin-top:22px;
+  }
+  .dots span{
+    width:8px; height:8px; border-radius:50%;
+    background:rgba(243,201,105,0.3);
+    transition:background 0.2s ease;
+  }
+  .dots span.active{ background:var(--gold-light); }
+
+  .petal{
+    position:fixed;
+    top:-30px;
+    font-size:1.4rem;
+    pointer-events:none;
+    animation-name:fall;
+    animation-timing-function:linear;
+    animation-fill-mode:forwards;
+    z-index:50;
+  }
+  @keyframes fall{
+    to{ transform:translateY(110vh) rotate(360deg); opacity:0.2; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .petal{ display:none; }
+    .step{ animation:none; }
+  }
+</style>
+</head>
+<body>
+
+
+<div class="card">
+
+ 
+  <div class="step active" data-step="0">
+    <div class="eyebrow">Rakshabandhan</div>
+    <h1>Happy Rakshabandhan Mayuri Tai, prishpu dii!</h1>
+    <p class="subtitle" id="forLine">This is for you</p>
+    <div class="name-row">
+      <label for="sisterName">Name:</label>
+      <input id="sisterName" type="text" placeholder="---" maxlength="20">
+    </div>
+  </div>
+
+ 
+  <div class="step" data-step="1">
+    <h1 style="font-size:1.6rem;">our memories💛</h1>
+    <div class="photo-frame">
+      
+<img src="./static/prishpi.jpeg"
+     width="100">
+     
+```
+
+       
+      
+    </div>
+    <p class="caption">Best sister I have🧡</p>
+  </div>
+
+  <!-- STEP 2: More photos grid -->
+  <div class="step" data-step="2">
+    <h1 style="font-size:1.6rem;">Our memories 📸</h1>
+    <div class="gallery">
+      <!-- PHOTO SLOT 2 -->
+      <div class="photo-frame"><img src="./static/mayuri.jpeg" ></div>
+      <!-- PHOTO SLOT 3 -->
+      <div class="photo-frame"><img src="./static/ham.jpeg"></div>
+      <!-- PHOTO SLOT 4 -->
+      <div class="photo-frame"><img src="./static/wagh.jpeg"></div>
+      <!-- PHOTO SLOT 5 -->
+      <div class="photo-frame"><img src="./static/apii.jpeg"></div>
+    </div>
+  </div>
+
+  <!-- STEP 3: Wishes -->
+  <div class="step" data-step="3">
+    <h1 style="font-size:1.8rem;">My wishes for youu🌸</h1>
+    <div class="wish-list">
+      <p>Happy Rakshabandhan taii tumhla!🎀</p>
+      <p>Majhya sathi tumhich mjah sagd ahe ata bhau pn papa pn ani aai pn ❤️</p>
+      <p>Mhnun ch mi tumhla rakhi bandhte karn tumhi raksha krta mjhi 😂🥰</p>
+      <p>Ashich majhi ayushbhar kadji ghet ja ! 😌</p>
+    </div>
+    <button class="btn-primary" id="tieBtn" style="margin-top:22px;">Click here</button>
+    <div id="tiedMsg" style="margin-top:14px; font-family:'Yatra One', cursive; color:var(--gold-light); opacity:0; transition:opacity 0.5s ease;">
+      I am always with you ! 🎉
+    </div>
+  </div>
+
+  <div class="dots">
+    <span class="active" data-dot="0"></span>
+    <span data-dot="1"></span>
+    <span data-dot="2"></span>
+    <span data-dot="3"></span>
+  </div>
+
+  <div class="controls">
+    <button class="btn-secondary" id="backBtn" style="visibility:hidden;">back</button>
+    <button class="btn-primary" id="nextBtn">next</button>
+  </div>
+
+</div>
+
+<script>
+  const steps = document.querySelectorAll('.step');
+  const dots = document.querySelectorAll('.dots span');
+  const nextBtn = document.getElementById('nextBtn');
+  const backBtn = document.getElementById('backBtn');
+  let current = 0;
+  const total = steps.length;
+
+  function render(){
+    steps.forEach(s => s.classList.toggle('active', +s.dataset.step === current));
+    dots.forEach(d => d.classList.toggle('active', +d.dataset.dot === current));
+    backBtn.style.visibility = current === 0 ? 'hidden' : 'visible';
+    nextBtn.textContent = current === total - 1 ? 'Done 🎉' : 'next';
+  }
+
+  nextBtn.addEventListener('click', () => {
+    if(current < total - 1){
+      current++;
+      render();
+    } else {
+      launchPetals();
+    }
+  });
+
+  backBtn.addEventListener('click', () => {
+    if(current > 0){
+      current--;
+      render();
+    }
+  });
+
+  // ---------- Name personalization ----------
+  const nameInput = document.getElementById('sisterName');
+  const forLine = document.getElementById('forLine');
+  nameInput.addEventListener('input', () => {
+    const val = nameInput.value.trim();
+    forLine.textContent = val ?'only for you, ${val}': 'only for you , didu';
+  });
+
+  // ---------- Tie the rakhi + petals ----------
+  const tieBtn = document.getElementById('tieBtn');
+  const tiedMsg = document.getElementById('tiedMsg');
+  const petalEmojis = ['🌸','🌼','✨','🧡'];
+
+  function launchPetals(){
+    for(let i=0;i<28;i++){
+      const p = document.createElement('div');
+      p.className = 'petal';
+      p.textContent = petalEmojis[Math.floor(Math.random()*petalEmojis.length)];
+      p.style.left = Math.random()*100 + 'vw';
+      const duration = 2.5 + Math.random()*2;
+      p.style.animationDuration = duration + 's';
+      p.style.animationDelay = (Math.random()*0.6) + 's';
+      document.body.appendChild(p);
+      setTimeout(() => p.remove(), (duration+1)*1000);
+    }
+  }
+
+  tieBtn.addEventListener('click', () => {
+    launchPetals();
+    tiedMsg.style.opacity = '1';
+  });
+</script>
+</body>
+</html>
